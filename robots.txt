@@ -1,0 +1,61 @@
+# Robots.txt for Dipul Poudel (imdipul) Portfolio
+# https://dipulpoudel.com.np
+# Last Updated: 2026-02-03
+
+# Allow all crawlers full access
+User-agent: *
+Allow: /
+
+# Specific permissions for Google Image Bot - FULL ACCESS
+User-agent: Googlebot-Image
+Allow: /assets/
+Allow: /assets/gallery/
+Allow: /Certificates/
+Allow: /*.jpg$
+Allow: /*.jpeg$
+Allow: /*.png$
+Allow: /*.gif$
+Allow: /*.webp$
+Allow: /*.svg$
+Allow: /*.JPG$
+Allow: /*.JPEG$
+Allow: /*.PNG$
+Disallow:
+
+# Specific permissions for Google Main Bot
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+Allow: /assets/gallery/
+Allow: /Certificates/
+Crawl-delay: 1
+
+# Bing Image Bot
+User-agent: bingbot
+Allow: /assets/
+Allow: /assets/gallery/
+Allow: /Certificates/
+
+# Other image crawlers
+User-agent: Slurp
+Allow: /assets/
+
+User-agent: DuckDuckBot
+Allow: /assets/
+
+User-agent: Baiduspider-image
+Allow: /assets/
+
+User-agent: YandexImages
+Allow: /assets/
+
+User-agent: Applebot
+Allow: /
+
+# Sitemap locations - CRITICAL FOR IMAGE INDEXING
+Sitemap: https://dipulpoudel.com.np/sitemap.xml
+Sitemap: https://dipulpoudel.com.np/image-sitemap.xml
+Sitemap: https://dipulpoudel.com.np/sitemap-index.xml
+
+# Host directive
+Host: https://dipulpoudel.com.np
