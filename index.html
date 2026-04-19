@@ -1,0 +1,2295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Dipul Poudel</title>
+<meta name="description" content="Dipul Poudel (imdipul) — Independent researcher, creative technologist"/>
+<meta property="og:title" content="Dipul Poudel — Independent Researcher & Creative Technologist"/>
+<meta property="og:description" content="Author of Loss-Reclamation Priority Theory, IEEE & ASME member, founder of imdipul Records."/>
+<link rel="icon" href="images/dipul.jpg" type="image/jpeg">
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+
+:root {
+  --navy:       #0a1628;
+  --navy-mid:   #142240;
+  --navy-soft:  #1e3a5f;
+  --blue:       #1d4ed8;
+  --blue-light: #3b6fe0;
+  --gold:       #b8922a;
+  --gold-light: #d4a843;
+  --white:      #ffffff;
+  --off-white:  #f8f9fc;
+  --cream:      #f3f4f8;
+  --border:     #dde2ef;
+  --text:       #0f1c2e;
+  --text-mid:   #374151;
+  --text-muted: #6b7280;
+  --text-light: #9ca3af;
+
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'Source Serif 4', Georgia, serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --nav-h: 64px;
+  --max-w: 1120px;
+  --radius: 4px;
+
+  --shadow-sm: 0 1px 3px rgba(10,22,40,.08), 0 1px 2px rgba(10,22,40,.05);
+  --shadow-md: 0 4px 16px rgba(10,22,40,.10), 0 2px 6px rgba(10,22,40,.06);
+  --shadow-lg: 0 12px 40px rgba(10,22,40,.14), 0 4px 12px rgba(10,22,40,.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--white);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ═══════════════════════════════════════════════
+   UTILITIES
+═══════════════════════════════════════════════ */
+.container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+.section { padding: 96px 0; }
+.section-alt { background: var(--off-white); }
+.section-navy { background: var(--navy); color: var(--white); }
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue);
+  display: block;
+  margin-bottom: 12px;
+}
+.section-navy .section-label { color: var(--gold-light); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--navy);
+  margin-bottom: 8px;
+}
+.section-navy .section-title { color: var(--white); }
+
+.section-rule {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+  border-radius: 2px;
+  margin-bottom: 48px;
+}
+.section-navy .section-rule { background: linear-gradient(90deg, var(--gold-light), #e8c56a); }
+
+a { color: var(--blue); text-decoration: none; transition: color .2s; }
+a:hover { color: var(--blue-light); }
+
+/* ═══════════════════════════════════════════════
+   NAVIGATION
+═══════════════════════════════════════════════ */
+#navbar {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  height: var(--nav-h);
+  background: rgba(255,255,255,.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: box-shadow .3s;
+}
+#navbar.scrolled { box-shadow: var(--shadow-md); }
+
+.nav-inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 32px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-brand {
+  display: flex; flex-direction: column; gap: 1px;
+  text-decoration: none;
+}
+.nav-brand-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1;
+}
+.nav-brand-sub {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  transition: color .2s;
+  position: relative;
+  padding-bottom: 4px;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute; bottom: 0; left: 0; right: 0;
+  height: 1px; background: var(--blue);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform .25s ease;
+}
+.nav-links a:hover { color: var(--navy); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+.nav-cta {
+  padding: 8px 18px;
+  background: var(--navy);
+  color: var(--white) !important;
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  transition: background .2s !important;
+}
+.nav-cta::after { display: none !important; }
+.nav-cta:hover { background: var(--navy-soft) !important; color: var(--white) !important; }
+
+/* ═══════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════ */
+#hero {
+  min-height: 100vh;
+  padding-top: var(--nav-h);
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 60% 50% at 85% 40%, rgba(29,78,216,.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 10% 70%, rgba(184,146,42,.05) 0%, transparent 60%);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(13,28,56,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(13,28,56,.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+.hero-inner {
+  position: relative; z-index: 1;
+  max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 80px;
+  align-items: center;
+  width: 100%;
+}
+
+.hero-eyebrow {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 24px;
+}
+.hero-eyebrow-line {
+  width: 40px; height: 1px; background: var(--blue);
+}
+.hero-eyebrow-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--blue);
+}
+
+.hero-name {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 7vw, 80px);
+  font-weight: 900;
+  line-height: 1.0;
+  color: var(--navy);
+  letter-spacing: -.02em;
+  margin-bottom: 6px;
+}
+.hero-name span {
+  display: block;
+  background: linear-gradient(135deg, var(--blue) 0%, var(--gold) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-aka {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  letter-spacing: .1em;
+  margin-bottom: 28px;
+}
+
+.hero-tagline {
+  font-size: 18px;
+  color: var(--text-mid);
+  line-height: 1.65;
+  max-width: 520px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.hero-tagline strong { color: var(--navy); font-weight: 600; }
+
+.hero-badges {
+  display: flex; flex-wrap: wrap; gap: 10px;
+  margin-bottom: 40px;
+}
+.badge {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 6px 14px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: .06em;
+  color: var(--navy);
+  white-space: nowrap;
+}
+.badge-dot { width: 6px; height: 6px; border-radius: 50%; }
+.badge-blue .badge-dot { background: var(--blue); }
+.badge-gold .badge-dot { background: var(--gold); }
+.badge-green .badge-dot { background: #059669; }
+
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: var(--navy);
+  color: var(--white);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+  border: 2px solid var(--navy);
+}
+.btn-primary:hover { background: var(--navy-soft); color: var(--white); transform: translateY(-1px); }
+
+.btn-secondary {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 14px 28px;
+  background: transparent;
+  color: var(--navy);
+  border: 2px solid var(--navy);
+  border-radius: var(--radius);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all .2s;
+}
+.btn-secondary:hover { background: var(--navy); color: var(--white); }
+
+/* Hero card panel */
+.hero-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.hero-card-header {
+  background: var(--navy);
+  padding: 24px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-avatar {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--blue), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 700;
+  color: var(--white);
+  flex-shrink: 0;
+  border: 3px solid rgba(255,255,255,.2);
+}
+.hero-card-info { flex: 1; }
+.hero-card-name {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--white);
+}
+.hero-card-title {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: .1em;
+  color: rgba(255,255,255,.55);
+  margin-top: 2px;
+}
+
+.hero-card-body { padding: 20px 24px; }
+.hero-stat-row {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.hero-stat {
+  display: flex; align-items: flex-start; gap: 14px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border);
+}
+.hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+.hero-stat-icon {
+  width: 32px; height: 32px;
+  background: var(--cream);
+  border-radius: 6px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0; margin-top: 2px;
+}
+.hero-stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.hero-stat-val {
+  font-size: 13px; font-weight: 600;
+  color: var(--navy);
+  line-height: 1.35;
+}
+
+.hero-card-footer {
+  padding: 14px 24px;
+  background: var(--cream);
+  border-top: 1px solid var(--border);
+  display: flex; gap: 10px; flex-wrap: wrap;
+}
+.hero-social {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-mid);
+  text-decoration: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  transition: all .2s;
+}
+.hero-social:hover { border-color: var(--blue); color: var(--blue); }
+
+/* ═══════════════════════════════════════════════
+   TICKER / SCROLL STRIP
+═══════════════════════════════════════════════ */
+.ticker-wrap {
+  background: var(--navy);
+  overflow: hidden;
+  padding: 14px 0;
+  border-top: 3px solid var(--gold);
+}
+.ticker-track {
+  display: flex; gap: 0;
+  animation: ticker 32s linear infinite;
+  white-space: nowrap;
+}
+.ticker-item {
+  display: inline-flex; align-items: center; gap: 24px;
+  padding: 0 40px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.7);
+}
+.ticker-item span { color: var(--gold-light); }
+.ticker-sep { color: rgba(255,255,255,.2); }
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ═══════════════════════════════════════════════
+   RESEARCH & PUBLICATIONS
+═══════════════════════════════════════════════ */
+.pub-grid { display: grid; gap: 28px; }
+
+.pub-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .25s, transform .2s;
+  display: grid;
+  grid-template-columns: auto 1fr;
+}
+.pub-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+
+.pub-card-accent {
+  width: 5px;
+  background: var(--blue);
+}
+
+.pub-card-body { padding: 24px 28px; }
+
+.pub-meta {
+  display: flex; align-items: center; gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.pub-type {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(29,78,216,.08);
+  color: var(--blue);
+  border: 1px solid rgba(29,78,216,.2);
+}
+.pub-date {
+  font-family: var(--font-mono); font-size: 10px;
+  color: var(--text-muted); letter-spacing: .08em;
+}
+
+.pub-title {
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--navy);
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+.pub-title a { color: inherit; text-decoration: none; }
+.pub-title a:hover { color: var(--blue); }
+
+.pub-venue {
+  font-size: 13px; color: var(--text-muted);
+  margin-bottom: 12px; font-style: italic;
+}
+
+.pub-abstract {
+  font-size: 14px; color: var(--text-mid);
+  line-height: 1.65; margin-bottom: 16px;
+}
+
+.pub-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+.pub-tag {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .06em; padding: 2px 10px;
+  background: var(--cream); color: var(--text-muted);
+  border-radius: 999px;
+  border: 1px solid var(--border);
+}
+
+.pub-links { display: flex; gap: 10px; flex-wrap: wrap; }
+.pub-link {
+  display: inline-flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--navy); text-decoration: none;
+  padding: 5px 12px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--white);
+  transition: all .2s;
+}
+.pub-link:hover { border-color: var(--blue); color: var(--blue); }
+.pub-link.primary {
+  background: var(--navy); color: var(--white);
+  border-color: var(--navy);
+}
+.pub-link.primary:hover { background: var(--navy-soft); color: var(--white); }
+
+/* Media / press cards */
+.press-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+.press-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s, transform .2s;
+  text-decoration: none;
+  display: block;
+}
+.press-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.press-outlet {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .14em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 8px; display: block;
+}
+.press-title {
+  font-size: 14px; font-weight: 600;
+  color: var(--navy); line-height: 1.4;
+  margin-bottom: 8px;
+}
+.press-date { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); }
+
+/* ═══════════════════════════════════════════════
+   CONFERENCES & TALKS
+═══════════════════════════════════════════════ */
+.conf-timeline { display: grid; gap: 0; position: relative; }
+.conf-timeline::before {
+  content: '';
+  position: absolute;
+  left: 18px; top: 24px; bottom: 0;
+  width: 2px;
+  background: #000000;
+}
+
+.conf-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 24px;
+  padding-bottom: 36px;
+  position: relative;
+}
+.conf-item:last-child { padding-bottom: 0; }
+
+.conf-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  background: #000000;
+  border: 3px solid var(--white);
+  box-shadow: 0 0 0 2px #000000;
+  margin-top: 6px;
+  flex-shrink: 0;
+  z-index: 1;
+  position: relative;
+}
+.conf-dot.gold { background: #000000; box-shadow: 0 0 0 2px #000000; }
+.conf-dot.upcoming { background: #000000; box-shadow: 0 0 0 2px #000000; }
+
+.conf-body {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+.conf-status {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .12em; text-transform: uppercase;
+  padding: 3px 10px; border-radius: 999px;
+  margin-bottom: 10px;
+}
+.conf-status.accepted { background: rgba(5,150,105,.1); color: #059669; border: 1px solid rgba(5,150,105,.3); }
+.conf-status.upcoming { background: rgba(29,78,216,.08); color: var(--blue); border: 1px solid rgba(29,78,216,.2); }
+.conf-status.delegate { background: rgba(184,146,42,.1); color: var(--gold); border: 1px solid rgba(184,146,42,.3); }
+
+.conf-title {
+  font-family: var(--font-display);
+  font-size: 16px; font-weight: 700;
+  color: var(--navy); margin-bottom: 4px;
+}
+.conf-paper {
+  font-size: 13px; color: var(--text-mid);
+  font-style: italic; margin-bottom: 10px;
+}
+.conf-meta {
+  display: flex; flex-wrap: wrap; gap: 14px;
+}
+.conf-meta-item {
+  display: flex; align-items: center; gap: 5px;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--text-muted);
+}
+
+.conf-logo {
+  width: 56px; height: 56px;
+  border-radius: 8px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+/* ═══════════════════════════════════════════════
+   EXPERIENCE
+═══════════════════════════════════════════════ */
+.exp-layout {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 0;
+}
+
+.exp-nav {
+  position: sticky; top: calc(var(--nav-h) + 24px);
+  align-self: start;
+  padding-right: 32px;
+  border-right: 1px solid var(--border);
+}
+.exp-nav-item {
+  display: block; padding: 10px 0;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-left: 2px solid transparent;
+  padding-left: 16px;
+  margin-left: -1px;
+  transition: all .2s;
+}
+.exp-nav-item:hover, .exp-nav-item.active {
+  color: var(--navy);
+  border-left-color: var(--blue);
+}
+
+.exp-panel { padding-left: 40px; display: grid; gap: 28px; }
+
+.exp-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow .2s;
+}
+.exp-card:hover { box-shadow: var(--shadow-md); }
+
+.exp-card-head {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.exp-icon {
+  width: 44px; height: 44px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+.exp-icon-navy { background: var(--navy); }
+.exp-icon-blue { background: rgba(29,78,216,.1); }
+.exp-icon-gold { background: rgba(184,146,42,.1); }
+
+.exp-role { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--navy); }
+.exp-org  { font-size: 13px; color: var(--blue); font-weight: 500; text-decoration: none; }
+.exp-org:hover { text-decoration: underline; }
+.exp-period {
+  margin-left: auto;
+  font-family: var(--font-mono); font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  padding-top: 2px;
+}
+
+.exp-card-body { padding: 20px 24px; }
+.exp-bullets {
+  list-style: none; display: grid; gap: 8px;
+}
+.exp-bullets li {
+  display: flex; gap: 10px;
+  font-size: 14px; color: var(--text-mid); line-height: 1.55;
+}
+.exp-bullets li::before {
+  content: '→';
+  color: var(--blue); font-size: 12px;
+  margin-top: 3px; flex-shrink: 0;
+}
+
+.exp-tags { display: flex; flex-wrap: wrap; gap: 6px; padding: 14px 24px; background: var(--cream); border-top: 1px solid var(--border); }
+.exp-tag {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .06em; color: var(--text-muted);
+  padding: 3px 10px; background: var(--white);
+  border: 1px solid var(--border); border-radius: 999px;
+}
+
+/* ═══════════════════════════════════════════════
+   MUSIC / CREATIVE
+═══════════════════════════════════════════════ */
+#music { background: var(--navy); color: var(--white); }
+
+.music-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+.music-statement {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--white);
+  margin-bottom: 20px;
+}
+.music-statement em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.music-bio {
+  font-size: 15px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.platform-card {
+  display: flex; flex-direction: column;
+  align-items: center; gap: 6px;
+  padding: 14px 8px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all .2s;
+}
+.platform-card:hover {
+  background: rgba(255,255,255,.12);
+  border-color: rgba(255,255,255,.25);
+  transform: translateY(-2px);
+}
+.platform-icon { font-size: 20px; }
+.platform-icon[src] { width: 32px; height: 32px; object-fit: contain; }
+.platform-name {
+  font-family: var(--font-mono); font-size: 9px;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+}
+
+.music-record-panel {
+  background: rgba(255,255,255,.04);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 12px;
+  overflow: hidden;
+}
+.music-record-head {
+  background: rgba(255,255,255,.06);
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,.1);
+  display: flex; align-items: center; gap: 14px;
+}
+.music-logo {
+  width: 48px; height: 48px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--blue), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-display);
+  font-size: 18px; font-weight: 700;
+  color: var(--white);
+}
+.music-label-name { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--white); }
+.music-label-sub { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; color: rgba(255,255,255,.4); }
+.music-record-body { padding: 20px 24px; }
+
+.music-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 20px; }
+.music-stat { text-align: center; }
+.music-stat-num {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+.music-stat-lbl {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.4);
+  margin-top: 4px;
+}
+
+.music-platforms-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.music-platform-badge {
+  display: inline-flex; align-items: center; gap: 5px;
+  padding: 5px 12px;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: rgba(255,255,255,.6);
+  text-decoration: none;
+  transition: all .2s;
+}
+.music-platform-badge:hover {
+  background: rgba(255,255,255,.14);
+  color: var(--white);
+}
+
+.imdb-card {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: rgba(245,197,24,.08);
+  border: 1px solid rgba(245,197,24,.2);
+  border-radius: 8px;
+  display: flex; align-items: center; gap: 12px;
+}
+.imdb-badge {
+  background: #f5c518;
+  color: #000;
+  font-weight: 900;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  letter-spacing: .05em;
+  flex-shrink: 0;
+}
+.imdb-text { font-size: 13px; color: rgba(255,255,255,.7); }
+.imdb-text a { color: #f5c518; font-weight: 600; }
+
+/* ═══════════════════════════════════════════════
+   CERTIFICATIONS
+═══════════════════════════════════════════════ */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.cert-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex; gap: 14px;
+  transition: box-shadow .2s, transform .15s;
+  text-decoration: none;
+}
+.cert-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.cert-issuer-badge {
+  width: 40px; height: 40px;
+  border-radius: 8px;
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px;
+  letter-spacing: -.02em;
+}
+.cert-issuer-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+}
+.cert-body { flex: 1; min-width: 0; }
+.cert-name { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.35; margin-bottom: 4px; }
+.cert-issuer-name { font-family: var(--font-mono); font-size: 10px; letter-spacing: .08em; color: var(--text-muted); }
+.cert-date { font-family: var(--font-mono); font-size: 10px; color: var(--text-light); }
+
+/* ═══════════════════════════════════════════════
+   HONORS / AWARDS
+═══════════════════════════════════════════════ */
+.awards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+.award-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow .2s, transform .15s;
+}
+.award-card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); }
+.award-card::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--blue), var(--gold));
+}
+.award-icon { font-size: 28px; margin-bottom: 12px; }
+.award-title { font-family: var(--font-display); font-size: 16px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.3; }
+.award-body { font-size: 13px; color: var(--text-mid); line-height: 1.55; margin-bottom: 10px; }
+.award-meta { font-family: var(--font-mono); font-size: 10px; color: var(--text-muted); letter-spacing: .08em; }
+
+/* ═══════════════════════════════════════════════
+   JOURNEY / IMAGES SECTION
+═══════════════════════════════════════════════ */
+#journey { background: var(--off-white); }
+
+.journey-intro {
+  font-size: 16px; color: var(--text-mid);
+  line-height: 1.7;
+  max-width: 640px;
+  margin-bottom: 48px;
+}
+
+.journey-mosaic {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(3, 180px);
+  gap: 8px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.journey-tile {
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden;
+  position: relative;
+  transition: transform .3s;
+}
+.journey-tile:hover { transform: scale(1.02); z-index: 2; }
+.journey-tile img { width: 100%; height: 100%; object-fit: cover; }
+.journey-tile-label {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  background: linear-gradient(0deg, rgba(10,22,40,.8), transparent);
+  padding: 20px 12px 10px;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.9);
+  opacity: 0; transition: opacity .25s;
+}
+.journey-tile:hover .journey-tile-label { opacity: 1; }
+
+/* Tile spanning */
+.journey-tile.wide { grid-column: span 2; }
+.journey-tile.tall { grid-row: span 2; }
+.journey-tile.large { grid-column: span 3; grid-row: span 2; }
+
+/* Placeholder tiles with gradient */
+.tile-a { background: linear-gradient(135deg, #0a1628 0%, #1d4ed8 100%); }
+.tile-b { background: linear-gradient(135deg, #1e3a5f 0%, #3b6fe0 100%); }
+.tile-c { background: linear-gradient(135deg, #b8922a 0%, #d4a843 100%); }
+.tile-d { background: linear-gradient(135deg, #142240 0%, #1d4ed8 80%); }
+.tile-e { background: linear-gradient(135deg, #0f1c2e 0%, #374151 100%); }
+.tile-f { background: linear-gradient(135deg, #1d4ed8 0%, #b8922a 100%); }
+
+.journey-tile-inner {
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  padding: 20px;
+  text-align: center;
+}
+.journey-tile-emoji { font-size: 28px; }
+.journey-tile-text {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em;
+  text-transform: uppercase; color: rgba(255,255,255,.8);
+  line-height: 1.4;
+}
+.journey-tile-sub {
+  font-size: 12px; color: rgba(255,255,255,.5);
+  font-family: var(--font-body);
+}
+
+/* Journey milestones strip */
+.journey-milestones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin-top: 40px;
+}
+.milestone {
+  text-align: center;
+  padding: 20px 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: var(--shadow-sm);
+}
+.milestone-year {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 900;
+  color: var(--blue); line-height: 1;
+  margin-bottom: 6px;
+}
+.milestone-event { font-size: 12px; color: var(--text-mid); line-height: 1.4; }
+
+/* ═══════════════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════════════ */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 60px;
+  align-items: start;
+}
+.contact-heading {
+  font-family: var(--font-display);
+  font-size: 36px; font-weight: 700;
+  color: var(--navy); line-height: 1.2;
+  margin-bottom: 16px;
+}
+.contact-sub { font-size: 15px; color: var(--text-mid); line-height: 1.7; margin-bottom: 36px; }
+
+.contact-items { display: grid; gap: 16px; }
+.contact-item {
+  display: flex; align-items: flex-start; gap: 16px;
+}
+.contact-icon-wrap {
+  width: 44px; height: 44px;
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px; flex-shrink: 0;
+}
+.contact-icon-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 8px;
+}
+.contact-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--text-muted); }
+.contact-val { font-size: 14px; font-weight: 600; color: var(--navy); }
+.contact-val a { color: var(--navy); text-decoration: none; }
+.contact-val a:hover { color: var(--blue); }
+
+.contact-profiles { margin-top: 32px; }
+.contact-profiles-title { font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--text-muted); margin-bottom: 14px; }
+.profile-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.profile-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 7px 14px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: var(--white);
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: .08em; text-transform: uppercase;
+  color: var(--navy); text-decoration: none;
+  transition: all .2s;
+  box-shadow: var(--shadow-sm);
+}
+.profile-link:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+.contact-card {
+  background: var(--navy);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.contact-card-head {
+  padding: 28px;
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.contact-card-title {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 700;
+  color: var(--white); margin-bottom: 8px;
+}
+.contact-card-sub { font-size: 13px; color: rgba(255,255,255,.55); }
+.contact-card-body { padding: 24px 28px; display: grid; gap: 14px; }
+.contact-card-item {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none;
+  padding: 12px 16px;
+  background: rgba(255,255,255,.05);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 6px;
+  transition: all .2s;
+}
+.contact-card-item:hover {
+  background: rgba(255,255,255,.1);
+  border-color: rgba(255,255,255,.2);
+}
+.cci-icon { font-size: 18px; flex-shrink: 0; }
+.cci-label { font-family: var(--font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+.cci-val { font-size: 13px; font-weight: 600; color: var(--white); }
+
+/* ═══════════════════════════════════════════════
+   LEADERSHIP / CIVIC
+═══════════════════════════════════════════════ */
+.civic-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+.civic-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
+  display: flex; gap: 14px;
+  transition: box-shadow .2s;
+}
+.civic-card:hover { box-shadow: var(--shadow-md); }
+.civic-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.civic-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; line-height: 1.3; }
+.civic-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+/* ═══════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════ */
+footer {
+  background: var(--navy);
+  padding: 48px 0 32px;
+  color: rgba(255,255,255,.55);
+}
+.footer-inner {
+  max-width: var(--max-w); margin: 0 auto; padding: 0 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+.footer-brand-name { font-family: var(--font-display); font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 8px; }
+.footer-brand-sub { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.6; }
+.footer-col-title { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.3); margin-bottom: 16px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-link { font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s; }
+.footer-link:hover { color: var(--white); }
+.footer-bottom {
+  max-width: var(--max-w); margin: 0 auto; padding: 24px 32px 0;
+  border-top: 1px solid rgba(255,255,255,.08);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+}
+.footer-copy { font-family: var(--font-mono); font-size: 11px; letter-spacing: .06em; }
+.footer-orcid { font-family: var(--font-mono); font-size: 11px; color: rgba(255,255,255,.35); }
+.footer-orcid a { color: rgba(255,255,255,.5); }
+
+/* ═══════════════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════════════ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.fade-up.d1 { transition-delay: .1s; }
+.fade-up.d2 { transition-delay: .2s; }
+.fade-up.d3 { transition-delay: .3s; }
+.fade-up.d4 { transition-delay: .4s; }
+
+/* ═══════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+  .exp-layout { grid-template-columns: 1fr; }
+  .exp-nav { display: none; }
+  .exp-panel { padding-left: 0; }
+  .music-grid { grid-template-columns: 1fr; }
+  .contact-layout { grid-template-columns: 1fr; }
+  .footer-inner { grid-template-columns: 1fr; gap: 24px; }
+  .journey-mosaic { grid-template-columns: repeat(3, 1fr); grid-template-rows: auto; }
+  .journey-tile.large { grid-column: span 3; grid-row: span 1; }
+  .platform-grid { grid-template-columns: repeat(4, 1fr); }
+  .nav-links { display: none; }
+}
+@media (max-width: 600px) {
+  .container { padding: 0 20px; }
+  .section { padding: 64px 0; }
+  .hero-name { font-size: 42px; }
+  .music-stat-row { grid-template-columns: repeat(3, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-brand">
+      <span class="nav-brand-name">Dipul Poudel</span>
+      <span class="nav-brand-sub">imdipul · Nepal</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#conferences">Conferences</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#music">Creative</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#journey">Journey</a></li>
+      <li><a href="#contact" class="nav-cta">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="hero-eyebrow-line"></div>
+        <span class="hero-eyebrow-text">Independent Researcher · Nepal</span>
+      </div>
+      <h1 class="hero-name">
+        Dipul<br>
+        <span>Poudel</span>
+      </h1>
+      <p class="hero-aka">also known as <strong>imdipul</strong></p>
+      <p class="hero-tagline">
+        <strong>Dipul Poudel,</strong>  known as imdipul, is a visionary polymath and creative technologist operating at the vanguard of sonic artistry and computational theory.<br>
+        He masterfully synthesizes avant-garde music production with rigorous scholarly research in energy optimization and decentralized AI. By harmonizing aesthetic precision with technical innovation specifically through his pioneering <strong>Loss-Reclamation Priority Theory (LRPT)</strong>
+      </p>
+      <div class="hero-badges">
+        <span class="badge badge-blue"><span class="badge-dot"></span>IEEE Member #102054571</span>
+        <span class="badge badge-gold"><span class="badge-dot"></span>ASME Member 2026</span>
+        <span class="badge badge-green"><span class="badge-dot"></span>ORCID 0009-0003-8154-2150</span>
+        <span class="badge badge-blue"><span class="badge-dot"></span>Rotaract</span>
+        <span class="badge badge-gold"><span class="badge-dot"></span>Royal Aeronautical Society (RAeS)</span>
+      </div>
+      <div class="hero-actions">
+        <a href="/images/Dipul_Poudel_CV.pdf" target="_blank" class="btn-primary">
+          📄 Curriculum Vitae
+        </a>
+        <a href="#contact" class="btn-secondary">
+          ✉ Get In Touch
+        </a>
+       
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <div class="hero-avatar">
+          <img src="images/dipul.jpg" alt="avatar" style="width:75px; height:75px; object-fit:contain;" loading="lazy">
+        </div>
+        <div class="hero-card-info">
+          <div class="hero-card-name">Dipul Poudel</div>
+          <div class="hero-card-title">Independent Researcher · Founder · Technologist</div>
+        </div>
+      </div>
+      <div class="hero-card-body">
+        <div class="hero-stat-row">
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <img src="images/doi.png"  style="width:32px; height:32px; object-fit:contain;" loading="lazy">
+            </div>
+            <div>
+              <div class="hero-stat-label">Primary Research</div>
+              <div class="hero-stat-val">Dipul's Loss-Reclamation Priority Theory (LRPT) — IJEDR 2026</div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+                            <img src="images/asme.jpg"  style="width:32px; height:32px; object-fit:contain;" loading="lazy">
+
+            </div>
+            <div>
+              <div class="hero-stat-label">Upcoming Talks</div>
+              <div class="hero-stat-val">ASME ES2026, Bellevue WA · GPIC Rome · EYS Geneva</div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+                            <img src="images/imdipulrecords.jpg"  style="width:32px; height:32px; object-fit:contain;" loading="lazy">
+
+            </div>
+            <div>
+              <div class="hero-stat-label">Creative Label</div>
+              <div class="hero-stat-val">imdipul Records — Global  </div>
+            </div>
+          </div>
+          <div class="hero-stat">
+            <div class="hero-stat-icon">
+              <img src="images/sunderland.png"  style="width:32px; height:32px; object-fit:contain;" loading="lazy">
+            </div>
+            <div>
+              <div class="hero-stat-label">Education</div>
+              <div class="hero-stat-val">BSc Computer Systems Engineering · University of Sunderland</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hero-card-footer">
+        <a href="https://orcid.org/0009-0003-8154-2150" target="_blank" class="hero-social">🔬 ORCID</a>
+        <a href="https://scholar.google.com/citations?user=auPA_qAAAAAJ&hl=en" target="_blank" class="hero-social">🎓 Scholar</a>
+        <a href="https://www.linkedin.com/in/imdipul" target="_blank" class="hero-social">💼 LinkedIn</a>
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6078708" target="_blank" class="hero-social">📑 SSRN</a>
+        <a href="https://engrxiv.org/preprint/view/6283" target="_blank" class="hero-social">🔗 engrXiv</a>
+      </div>
+    </div>
+  </div>
+</section>
+ <br>
+
+  </br> 
+<!-- Ticker Strip -->
+<div class="ticker-wrap">
+  <div class="ticker-track">
+    <span class="ticker-item">LRPT <span>·</span> Published IJEDR 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">ASME ES2026 <span>·</span> Paper  #ES2026-193762 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">European Youth Summit <span>·</span> Delegate of Nepal · Geneva 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">GPIC Rome <span>·</span>  Presenter · September 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">IEEE Member <span>·</span> #102054571 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">ASME Member <span>·</span> Year Issued 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">imdipul Records <span>·</span> Est. 2020 · Global Distribution <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Mathematics Olympiad Nepal <span>·</span> National Pre-TST 2025 <span class="ticker-sep">◆</span></span>
+    <!-- Duplicate for infinite loop -->
+    <span class="ticker-item">LRPT <span>·</span> Published IJEDR 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">ASME ES2026 <span>·</span> Paper  #ES2026-193762 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">European Youth Summit <span>·</span> Delegate of Nepal · Geneva 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">GPIC Rome <span>·</span>  Presenter · September 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">IEEE Member <span>·</span> #102054571 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">ASME Member <span>·</span> Year Issued 2026 <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">imdipul Records <span>·</span> Est. 2020 · Global Distribution <span class="ticker-sep">◆</span></span>
+    <span class="ticker-item">Mathematics Olympiad Nepal <span>·</span> National Pre-TST 2025 <span class="ticker-sep">◆</span></span>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     RESEARCH & PUBLICATIONS
+═══════════════════════════════════════════════ -->
+<section id="research" class="section">
+  <div class="container">
+    <span class="section-label fade-up">Research & Publications</span>
+    <h2 class="section-title fade-up d1">Original Theory &<br>Published Work</h2>
+    <div class="section-rule fade-up d2"></div>
+
+    <div class="pub-grid">
+
+      <!-- MAIN PAPER -->
+      <div class="pub-card fade-up">
+        <div class="pub-card-accent"></div>
+        <div class="pub-card-body">
+          <div class="pub-meta">
+            <span class="pub-type">Peer-Reviewed Journal</span>
+            <span class="pub-date">January 2026 · IJEDR Vol.14, Iss.1</span>
+          </div>
+          <h3 class="pub-title">
+            <a href="https://rjwave.org/ijedr/papers/IJEDR2601203.pdf" target="_blank">
+              Dipul's Loss-Reclamation Priority Theory (LRPT): A Constraint-Aware Optimization Framework for Energy Systems
+            </a>
+          </h3>
+          <p class="pub-venue">International Journal of Engineering Development & Research (IJEDR) · Dipul Poudel, Independent Researcher, Nepal</p>
+          <p class="pub-abstract">
+            Introduces a systems-level optimization doctrine asserting that, under realistic constraints of mass, cost, volume, complexity, and reliability, prioritizing the reclamation and reuse of unavoidable energy losses yields greater net functional efficiency gains than increasing primary energy input. Establishes a formal inequality via classical energy balance, constraint-aware marginal analysis, and exergy reasoning. Validated across electric vehicles (15–30% recovery gain), ICE vehicles (20–40%), aircraft, and data centers. LRPT introduces no new physical laws — it is a prescriptive optimization doctrine: original in formulation, falsifiable, and suitable for early-stage engineering design.
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag">Energy Efficiency</span>
+            <span class="pub-tag">Loss Reclamation</span>
+            <span class="pub-tag">Systems Optimization</span>
+            <span class="pub-tag">Exergy Analysis</span>
+            <span class="pub-tag">Constrained Systems</span>
+            <span class="pub-tag">Decentralized Energy</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://rjwave.org/ijedr/papers/IJEDR2601203.pdf" target="_blank" class="pub-link primary">📄 Full Paper (IJEDR)</a>
+            <a href="https://engrxiv.org/preprint/view/6283" target="_blank" class="pub-link">🔗 engrXiv</a>
+            <a href="https://osf.io/a2ye7/" target="_blank" class="pub-link">🔬 OSF</a>
+            <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6078708" target="_blank" class="pub-link">📑 SSRN</a>
+            <a href="https://www.scribd.com/document/981498264/Dipul-s-Loss-Reclamation-Priority-Theory-LRPT" target="_blank" class="pub-link">📖 Scribd</a>
+            <a href="https://independent.academia.edu/DipulPoudel" target="_blank" class="pub-link">🎓 Academia.edu</a>
+          </div>
+        </div>
+      </div>
+
+       <!-- MAIN PAPER -->
+     <div class="pub-card fade-up">
+        <div class="pub-card-accent"></div>
+        <div class="pub-card-body">
+          <div class="pub-meta">
+            <span class="pub-type">Research Paper</span>
+            <span class="pub-date">February 27, 2026</span>
+          </div>
+          <h3 class="pub-title">
+            <a href="https://zenodo.org/records/18799977" target="_blank">
+              Dipul's Green AI Reclamation Framework: A Practical Way to Handle Energy Limits in AI Training and Inference 
+            </a>
+          </h3>
+          <p class="pub-venue">Dipul Poudel, Independent Researcher [cite: 95]</p>
+          <p class="pub-abstract">
+            This paper lays out Dipul's Green AI Reclamation Framework, which is simply called GARF. The framework asserts that when AI systems face tight limits regarding power, equipment, carbon rules, money, and speed, focusing first on recovering compute that is being wasted right now such as idle GPU time, unnecessary calculations, and models with way too many parameters yields far more real improvement. Recovering those losses beats just piling on more hardware or bigger models. Built on basic energy balance thinking and common sense about constraints, quantitative case studies from 2024 to 2026 in large language model training, data center inference, and mobile devices showed the reclamation approach often gave two to four times better results in efficiency.
+          </p>
+          <div class="pub-tags">
+            <span class="pub-tag">Green AI [cite: 105]</span>
+            <span class="pub-tag">Compute Reclamation [cite: 105]</span>
+            <span class="pub-tag">Sustainable Inference [cite: 105]</span>
+            <span class="pub-tag">Constraint Aware Optimization [cite: 105]</span>
+            <span class="pub-tag">Model Compression [cite: 105]</span>
+            <span class="pub-tag">Energy Efficient AI [cite: 105]</span>
+          </div>
+          <div class="pub-links">
+            <a href="https://zenodo.org/records/18799977" target="_blank" class="pub-link primary">📄 Full Paper (Zenodo)</a>
+            <a href="https://www.researchgate.net/publication/401295157_Dipul's_Green_AI_Reclamation_Framework_A_Practical_Way_to_Handle_Energy_Limits_in_AI_Training_and_Inference" target="_blank" class="pub-link">🔬 ResearchGate</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Press / Media Publications -->
+    <h3 style="font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--navy);margin-top:52px;margin-bottom:4px;" class="fade-up">
+      Press & Media Features
+    </h3>
+    <p style="font-size:14px;color:var(--text-muted);margin-bottom:0;" class="fade-up d1">International coverage and published writing</p>
+    <div class="press-grid">
+      <a href="https://www.issuewire.com/nepali-creative-technologist-dipul-poudel-gains-international-recognition-through-independent-research-1855120751256639" target="_blank" class="press-card fade-up">
+        <span class="press-outlet">IssueWire</span>
+        <div class="press-title">Nepali Creative Technologist Dipul Poudel Gains International Recognition Through Independent Research</div>
+        <div class="press-date">January 2026</div>
+      </a>
+      <a href="https://www.teenlife.com/blog/how-volunteering-shaped-my-purpose-and-potential/" target="_blank" class="press-card fade-up d1">
+        <span class="press-outlet">TeenLife · U.S. News Affiliate</span>
+        <div class="press-title">How Volunteering Shaped My Purpose and Potential</div>
+        <div class="press-date">October 2025</div>
+      </a>
+      <a href="https://www.prlog.org/13071392-nepali-artist-imdipul-blends-genre-and-innovation-to-redefine-independent-music.html" target="_blank" class="press-card fade-up d2">
+        <span class="press-outlet">PRLog</span>
+        <div class="press-title">Nepali Artist imdipul Blends Genre and Innovation to Redefine Independent Music</div>
+        <div class="press-date">April 2025</div>
+      </a>
+      <a href="https://www.imdb.com/name/nm13039966" target="_blank" class="press-card fade-up d3">
+        <span class="press-outlet">IMDb</span>
+        <div class="press-title">Dipul Poudel (imdipul) — Writer, Composer & Editor Credits</div>
+        <div class="press-date">Since 2021</div>
+      </a>
+      <a href="https://en.everybodywiki.com/imdipul" target="_blank" class="press-card fade-up">
+        <span class="press-outlet">EverybodyWiki</span>
+        <div class="press-title">Dipul Poudel aka imdipul — Encyclopedia Entry</div>
+        <div class="press-date">Since 2021</div>
+      </a>
+      <a href="https://scholar.google.com/citations?user=auPA_qAAAAAJ&hl=en" target="_blank" class="press-card fade-up d1">
+        <span class="press-outlet">Google Scholar</span>
+        <div class="press-title">Research Profile — Citations & Academic Indexing</div>
+        <div class="press-date">Active 2026</div>
+      </a>
+
+      <div class="hero-actions">
+        <a href="https://medium.com/@dipulpoudel123" target="_blank" class="btn-primary">
+          📄 ↗ Read Blogs
+        </a>
+      </div>
+
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CONFERENCES & TALKS
+═══════════════════════════════════════════════ -->
+<section id="conferences" class="section section-alt">
+  <div class="container">
+    <span class="section-label fade-up">Conferences & Talks</span>
+    <h2 class="section-title fade-up d1">International Presentations<br>& Delegations</h2>
+    <div class="section-rule fade-up d2"></div>
+
+    <div class="conf-timeline">
+
+      <div class="conf-item fade-up">
+        <div class="conf-dot gold"></div>
+        <div class="conf-body">
+          <div class="conf-logo"><img src="images/CDA.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+          <div>
+            <span class="conf-status delegate">Delegate</span>
+            <div class="conf-title">European Youth Summit 2026 — Geneva, Switzerland</div>
+            <div class="conf-paper">Centre for Diplomatic Advancement · Ref: EYS-FF-2646 · Mövenpick Hotel</div>
+            <div class="conf-meta">
+              <span class="conf-meta-item">· June 5–8, 2026</span>
+              <span class="conf-meta-item">· Geneva, Switzerland</span>
+              <span class="conf-meta-item">· Leadership, Policy, Diplomacy & Sustainability</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-item fade-up d1">
+        <div class="conf-dot upcoming"></div>
+        <div class="conf-body">
+          <div class="conf-logo"><img src="images/asme.jpg"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+          <div>
+            <span class="conf-status accepted">Oral Presentation</span>
+            <div class="conf-title"><a href="https://event.asme.org/ES" target="_blank">ASME Energy Sustainability Conference 2026 (ES2026)</a></div>
+            <div class="conf-paper">Paper #ES2026-193762 "</div>
+            <div class="conf-meta">
+              <span class="conf-meta-item">· July 26–29, 2026</span>
+              <span class="conf-meta-item">· Hyatt Regency Bellevue, WA, USA</span>
+              <span class="conf-meta-item">· ASME-Sponsored · Signed by COO Jeff Patterson</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-item fade-up d2">
+        <div class="conf-dot upcoming"></div>
+        <div class="conf-body">
+          <div class="conf-logo"><img src="images/GPIC.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+          <div>
+            <span class="conf-status upcoming"> Presentation</span>
+            <div class="conf-title"><a href="https://physicsinnovationconference.com/program/scientific-program/2026/dipul-s-loss-reclamation-priority-theory-lrpt-a-constraint-aware-optimization-framework-for-energy-systems" target="_blank">Global Physics Innovation Conference 2026 (GPIC)</a></div>
+            <div class="conf-paper">"A Constraint-Aware Optimization Framework for Energy Systems"</div>
+            <div class="conf-meta">
+              <span class="conf-meta-item">· September 17–19, 2026</span>
+              <span class="conf-meta-item">· Rome, Italy & Online</span>
+              <span class="conf-meta-item">· Hybrid International Conference</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="conf-item fade-up d3">
+        <div class="conf-dot"></div>
+        <div class="conf-body">
+          <div class="conf-logo"><img src="images/VMUN.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+          <div>
+            <span class="conf-status accepted"> Delegate & Secretariat</span>
+            <div class="conf-title">Valmiki Model United Nations (UNHRC)</div>
+            <div class="conf-paper">Represented Yemen — UN Human Rights Council. Authored resolutions, led negotiations with 100+ delegates. Also served as Secretariat.</div>
+            <div class="conf-meta">
+              <span class="conf-meta-item">· June 2023</span>
+              <span class="conf-meta-item">· Nepal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     EXPERIENCE & LEADERSHIP
+═══════════════════════════════════════════════ -->
+<section id="experience" class="section">
+  <div class="container">
+    <span class="section-label fade-up">Experience & Leadership</span>
+    <h2 class="section-title fade-up d1">Professional Journey</h2>
+    <div class="section-rule fade-up d2"></div>
+
+    <div class="exp-layout">
+      <nav class="exp-nav">
+        <a href="#exp-imdipul" class="exp-nav-item active">imdipul Records</a>
+        <a href="#exp-rotaract" class="exp-nav-item">Rotaract</a>
+        <a href="#exp-nsri" class="exp-nav-item">NSRI</a>
+        <a href="#exp-infinity" class="exp-nav-item">Infinity IT</a>
+        <a href="#exp-pinbazzar" class="exp-nav-item">Pin Bazzar</a>
+        <a href="#exp-interact" class="exp-nav-item">Interact D3292</a>
+      </nav>
+
+      <div class="exp-panel">
+
+        <div class="exp-card fade-up" id="exp-imdipul">
+          <div class="exp-card-head">
+            <div class="exp-icon exp-icon-navy" style="background:linear-gradient(135deg,#0a1628,#1d4ed8);">
+                                      <div class="conf-logo"><img src="images/imdipulrecords.jpg"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+
+            </div>
+            <div>
+              <div class="exp-role">Founder & Creative Director</div>
+              <a href="https://dipulpoudel.com.np" target="_blank" class="exp-org">imdipul Records</a>
+            </div>
+            <span class="exp-period">2020 – Present</span>
+          </div>
+          <div class="exp-card-body">
+            <ul class="exp-bullets">
+              <li>Founded an internationally visible creative-technology label with sustained output since 2020; catalog indexed on IMDb, Indiefy and FilmFreeway.</li>
+              <li>Produced, composed, and globally distributed original music across 8+ major streaming platforms including Spotify, Apple Music, Amazon Music, YouTube, SoundCloud, iHeart, Audiomack, and Shazam.</li>
+              <li>Designed end-to-end creative pipelines: ideation → composition → sound design → mixing/mastering → digital publishing → global distribution.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Music Production</span><span class="exp-tag">Digital Publishing</span><span class="exp-tag">Brand Building</span><span class="exp-tag">Global Distribution</span><span class="exp-tag">Sound Design</span>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up d1" id="exp-rotaract">
+          <div class="exp-card-head">
+            <div class="exp-icon" style="background:rgba(29,78,216,.1);">
+                        <div class="conf-logo"><img src="images/rotaract-logo.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+
+            </div>
+            <div>
+              <div class="exp-role">Administrative Officer <span style="font-weight:400;font-size:13px;color:var(--text-muted)">& prev. Editor-in-Chief</span></div>
+              <a href="https://rcnarayangarh.org.np" target="_blank" class="exp-org">Rotaract Club of Narayangarh · Rotary International</a>
+            </div>
+            <span class="exp-period">Jul 2024 – Present</span>
+          </div>
+          <div class="exp-card-body">
+            <ul class="exp-bullets">
+              <li>As Editor-in-Chief (Jul 2024–Jun 2025): directed full editorial cycle across print/digital; grew digital readership 200%; improved publication efficiency 40%.</li>
+              <li>Organized charity events, awareness campaigns, and professional-development workshops reaching thousands of community beneficiaries via Rotary International's global network.</li>
+              <li>Received Special Presidential Appreciation Award (July 2024) for sustained leadership and organizational contributions.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Editorial Leadership</span><span class="exp-tag">Community Service</span><span class="exp-tag">Youth Leadership</span><span class="exp-tag">Event Management</span>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up d1" id="exp-nsri">
+          <div class="exp-card-head">
+            <div class="exp-icon" style="background:rgba(184,146,42,.1);">
+                                      <div class="conf-logo"><img src="images/NSRI.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+
+            </div>
+            <div>
+              <div class="exp-role">NSRI School Ambassador</div>
+              <a href="https://nsri.world" target="_blank" class="exp-org">National Student Research Institution (NSRI)</a>
+            </div>
+            <span class="exp-period">Feb 2026 – Present</span>
+          </div>
+          <div class="exp-card-body">
+            <ul class="exp-bullets">
+              <li>Represents NSRI at school level, promoting student research culture and facilitating youth engagement with scientific inquiry across Nepal.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Research Culture</span><span class="exp-tag">Youth Engagement</span><span class="exp-tag">NSRI</span>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up d2" id="exp-infinity">
+          <div class="exp-card-head">
+            <div class="exp-icon" style="background:rgba(29,78,216,.08);">
+
+                 <div class="conf-logo"><img src="images/infinityit.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+
+            </div>
+            <div>
+              <div class="exp-role">IT Intern</div>
+              <div class="exp-org">Infinity IT Solution</div>
+              
+            </div>
+            <span class="exp-period">Apr – May 2025</span>
+          </div>
+          <div class="exp-card-body">
+            <ul class="exp-bullets">
+              <li>Hands-on IT support, system maintenance, and software troubleshooting in a professional technology environment.</li>
+              <li>Gained practical experience in networking, data management, and client-facing technical solutions.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">IT Support</span><span class="exp-tag">Networking</span><span class="exp-tag">System Maintenance</span>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up d2" id="exp-pinbazzar">
+          <div class="exp-card-head">
+            <div class="exp-icon" style="background:rgba(5,150,105,.1);">
+                                      <div class="conf-logo"><img src="images/pinbazzar.jpg"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+
+            </div>
+            <div>
+              <div class="exp-role">Web Developer</div>
+              <div class="exp-org">Pin Bazzar</div>
+            </div>
+            <span class="exp-period">2022 – 2024</span>
+          </div>
+          <div class="exp-card-body">
+            <ul class="exp-bullets">
+              <li>Designed and implemented functional web interfaces aligned with business and user requirements.</li>
+              <li>Applied front-end development best practices using HTML5, CSS3, JavaScript, and Bootstrap.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">HTML5</span><span class="exp-tag">CSS3</span><span class="exp-tag">JavaScript</span><span class="exp-tag">Bootstrap</span>
+          </div>
+        </div>
+
+        <div class="exp-card fade-up d3" id="exp-interact">
+          <div class="exp-card-head">
+            <div class="exp-icon" style="background:rgba(29,78,216,.08);">
+                                      <div class="conf-logo"><img src="images/interact-logo.png"  style="width: 100%; height: 100%; object-fit: contain;"></div loading="lazy">
+
+            </div>
+            <div>
+              <div class="exp-role">IT Officer Zone II</div>
+              <a href="https://interactnepal.org" target="_blank" class="exp-org">Interact District 3292 — Nepal & Bhutan</a>
+            </div>
+            <span class="exp-period">2023 – 2024</span>
+          </div>
+          <div class="exp-card-body">
+            <ul class="exp-bullets">
+              <li>Led digital transformation initiatives implementing cloud-based solutions and modern communication systems across the district.</li>
+              <li>Established cybersecurity frameworks and data protection protocols; trained 250+ members, reducing inter-club response time by 55%.</li>
+            </ul>
+          </div>
+          <div class="exp-tags">
+            <span class="exp-tag">Cybersecurity</span><span class="exp-tag">Digital Transformation</span><span class="exp-tag">IT Leadership</span><span class="exp-tag">Training</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Civic & Volunteer Grid -->
+    <div style="margin-top:56px;">
+      <h3 style="font-family:var(--font-display);font-size:22px;font-weight:700;color:var(--navy);margin-bottom:24px;" class="fade-up">Civic Leadership & Volunteerism</h3>
+      <div class="civic-grid">
+        <div class="civic-card fade-up">
+          <div class="civic-icon"></div>
+          <div>
+            <div class="civic-title"><a href="https://www.rotary.org/en/get-involved/interact-clubs" target="_blank">Interact Club</a></div>
+            <div class="civic-desc">Rotary International — Interact Club.
+Leadership development and global community service.</div>
+          </div>
+        </div>
+        <div class="civic-card fade-up d1">
+          <div class="civic-icon"></div>
+          <div>
+            <div class="civic-title"><a href="https://www.rotary.org/en/get-involved/rotaract-clubs" target="_blank">Rotaract Club</a></div>
+            <div class="civic-desc">Rotary International — Rotaract Club.
+International humanitarian service and professional networking.</div>
+          </div>
+        </div>
+        <div class="civic-card fade-up d2">
+          <div class="civic-icon"></div>
+          <div>
+            <div class="civic-title"><a href="https://www.unep.org/tunza" target="_blank">UNEP-TUNZA Student Volunteer</a></div>
+            <div class="civic-desc">United Nations Environment Programme  TUNZA Youth Network. Environmental advocacy and global outreach.</div>
+          </div>
+        </div>
+        <div class="civic-card fade-up d3">
+          <div class="civic-icon"></div>
+          <div>
+            <div class="civic-title"><a href="https://www.nrcs.org" target="_blank">Nepal Red Cross Society</a></div>
+            <div class="civic-desc">Humanitarian volunteering with Nepal Red Cross Society and Valmiki School chapter. Blood donation camps, relief activities.</div>
+          </div>
+        </div>
+        <div class="civic-card fade-up">
+          <div class="civic-icon"></div>
+          <div>
+            <div class="civic-title">Nymat Nepal — Rabies Free Future.</div>
+            <div class="civic-desc">Mobilizing youth to achieve the global "Zero by 30" rabies elimination goal.</div>
+          </div>
+        </div>
+        <div class="civic-card fade-up d1">
+          <div class="civic-icon"></div>
+          <div>
+            <div class="civic-title"><a href="https://iycforyouth.org" target="_blank">International Organization of Youth (IYC)</a></div>
+            <div class="civic-desc">Leadership development and mobilizing action for the Sustainable Development Goals (SDGs).</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     MUSIC / CREATIVE WORK
+═══════════════════════════════════════════════ -->
+<section id="music">
+  <div class="section">
+    <div class="container">
+      <span class="section-label fade-up" style="color:var(--gold-light);">Creative Work · imdipul</span>
+      <h2 class="section-title fade-up d1" style="color:var(--white);">Music, Art &<br>Creative Technology</h2>
+      <div class="section-rule fade-up d2"></div>
+
+      <div class="music-grid">
+        <div>
+          <p class="music-statement fade-up">
+            Where tech meets rhythm —<br>
+            <em>creativity as a system,</em><br>
+            technology as a canvas.
+          </p>
+          <p class="music-bio fade-up d1">
+            As <strong style="color:var(--white)">imdipul</strong>, Dipul Poudel has been producing, composing, and distributing
+            original music since 2018  emerging creative scene and reaching global audiences
+            across 8+ major platforms. His work transcends genre boundaries, blending production precision
+            with independent artistry. Recognized on <a href="https://www.imdb.com/name/nm13039966" target="_blank" style="color:var(--gold-light)">IMDb</a>,
+            EverybodyWiki,
+      PRLog, and Indiefy.
+          </p>
+          <div class="platform-grid fade-up d2">
+            <a href="https://open.spotify.com/artist/3tPRbNXu98VJCqYEO1C7LI" target="_blank" class="platform-card">
+              <img src="images/icons/spotify.png" alt="Spotify" class="platform-icon" loading="lazy">
+              <span class="platform-name">Spotify</span>
+            </a>
+            <a href="https://music.apple.com/us/artist/imdipul/1583546375" target="_blank" class="platform-card">
+              <img src="images/icons/applemusic.png" alt="Apple Music" class="platform-icon" loading="lazy">
+              <span class="platform-name">Apple</span>
+            </a>
+            <a href="https://music.amazon.com/artists/B09BNQPL51/imdipul" target="_blank" class="platform-card">
+              <img src="images/icons/amazonmusic.png" alt="Amazon Music" class="platform-icon" loading="lazy">
+              <span class="platform-name">Amazon</span>
+            </a>
+            <a href="https://www.youtube.com/imdipul" target="_blank" class="platform-card">
+              <img src="images/icons/ytmusic.png" alt="YouTube" class="platform-icon" loading="lazy">
+              <span class="platform-name">YouTube</span>
+            </a>
+            <a href="https://soundcloud.com/imdipul" target="_blank" class="platform-card">
+              <img src="images/icons/soundcloud.png" alt="SoundCloud" class="platform-icon" loading="lazy">
+              <span class="platform-name">SoundCloud</span>
+            </a>
+            <a href="https://www.iheart.com/artist/imdipul-37446052/" target="_blank" class="platform-card">
+              <img src="images/icons/iHeart.png" alt="iHeart" class="platform-icon" loading="lazy">
+              <span class="platform-name">iHeart</span>
+            </a>
+            <a href="https://audiomack.com/imdipul" target="_blank" class="platform-card">
+              <img src="images/icons/audiomack.png" alt="Audiomack" class="platform-icon" loading="lazy">
+              <span class="platform-name">Audiomack</span>
+            </a>
+            <a href="https://www.shazam.com/artist/imdipul/1583546375" target="_blank" class="platform-card">
+              <img src="images/icons/shazam.png" alt="Shazam" class="platform-icon" loading="lazy">
+              <span class="platform-name">Shazam</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="fade-up d1">
+          <div class="music-record-panel">
+            <div class="music-record-head">
+              <div class="music-logo"> 
+                          <img src="images/imdipulrecords.jpg" alt="avatar" style="width:60px; height:60px; object-fit:contain;" loading="lazy">
+
+              </div>
+              <div>
+                <div class="music-label-name">imdipul Records</div>
+                <div class="music-label-sub">Est. 2020 ·  Nepal · Global</div>
+              </div>
+            </div>
+            <div class="music-record-body">
+              <div class="music-stat-row">
+                <div class="music-stat">
+                  <div class="music-stat-num">8+</div>
+                  <div class="music-stat-lbl">Platforms</div>
+                </div>
+                <div class="music-stat">
+                  <div class="music-stat-num">5+</div>
+                  <div class="music-stat-lbl">Years Active</div>
+                </div>
+                <div class="music-stat">
+                  <div class="music-stat-num">🌏</div>
+                  <div class="music-stat-lbl">Global Reach</div>
+                </div>
+              </div>
+              <div class="music-platforms-list">
+                <a href="https://www.imdb.com/name/nm13039966" target="_blank" class="music-platform-badge">IMDb</a>
+                <a href="https://en.everybodywiki.com/imdipul" target="_blank" class="music-platform-badge"> EverybodyWiki</a>
+                <a href="https://filmfreeway.com" target="_blank" class="music-platform-badge">FilmFreeway</a>
+                <a href="https://www.tiktok.com/@imdipul" target="_blank" class="music-platform-badge"> TikTok</a>
+                <a href="https://www.instagram.com/imdipul" target="_blank" class="music-platform-badge"> Instagram</a>
+              </div>
+              <div class="imdb-card">
+                <span class="imdb-badge">IMDb</span>
+                <span class="imdb-text">Listed as Writer, Composer & Editor since 2021. <a href="https://www.imdb.com/name/nm13039966" target="_blank">View Profile ↗</a></span>
+              </div>
+              <div class="imdb-card">
+                <span class="imdb-badge">Muso</span>
+                <span class="imdb-text">New Album | We Fell In Love In June - Imdipul Records <a href="https://credits.muso.ai/profile/940cd064-1275-4184-b378-dc39e203dee4" target="_blank">View More ↗</a></span>
+              </div>
+               <div class="imdb-card">
+                <span class="imdb-badge">Yandex Music</span>
+                <span class="imdb-text">Stream Latest Album on Yandex Music <a href="https://music.yandex.ru/artist/15786785" target="_blank">Stream ↗</a></span>
+              </div>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════════════
+     CERTIFICATIONS
+═══════════════════════════════════════════════ -->
+<section id="certifications" class="section">
+  <div class="container">
+    <span class="section-label fade-up">Certifications</span>
+    <h2 class="section-title fade-up d1">Professional Credentials</h2>
+    <div class="section-rule fade-up d2"></div>
+    <div class="cert-grid">
+
+      <a href="https://catalog-education.oracle.com/ords/certview/sharebadge?id=0BC70EE3225F161F9784D485E6CC919E1345723983D0EF40695507EAB51D73DD" target="_blank" class="cert-card fade-up">
+        <div class="cert-issuer-badge"><img src="images/icons/Oracle.png" alt="Oracle"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Oracle Cloud Infrastructure Foundations Associate</div>
+          <div class="cert-issuer-name">Oracle · ID: 102664128OCI25FNDCFA</div>
+          <div class="cert-date">Sep 2025</div>
+        </div>
+      </a>
+
+      <a href="https://www.credly.com/badges/0d2d31c0-2009-4d1b-a27b-ce41bae7df91" target="_blank" class="cert-card fade-up d1">
+        <div class="cert-issuer-badge"><img src="images/icons/IBM.png" alt="IBM"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Open Source Foundations</div>
+          <div class="cert-issuer-name">IBM</div>
+          <div class="cert-date">Oct 2025</div>
+        </div>
+      </a>
+
+      <a href="https://www.credly.com/badges/6a322182-d3ab-45a8-a56d-90d74276cfff" target="_blank" class="cert-card fade-up d2">
+        <div class="cert-issuer-badge"><img src="images/icons/Cisco.jpg" alt="Cisco"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Introduction to Cybersecurity</div>
+          <div class="cert-issuer-name">Cisco · ID: 6a322182</div>
+          <div class="cert-date">Jul 2025</div>
+        </div>
+      </a>
+
+      <a href="https://www.credly.com/badges/ca313164-ae22-4c35-835f-08861fc4e875" target="_blank" class="cert-card fade-up d3">
+        <div class="cert-issuer-badge"><img src="images/icons/Cisco.jpg" alt="Cisco"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Networking Basics</div>
+          <div class="cert-issuer-name">Cisco · ID: ca313164</div>
+          <div class="cert-date">Jul 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQGWurdfLtoOWw/profile-treasury-document-images_1920/B56ZlBd5W3JoAw-/1/1757739982011?e=1777507200&v=beta&t=b7ajr22olb5PcQsBYzUN70_YTTPap5DV3ydt_pbfhXI" target="_blank" class="cert-card fade-up">
+        <div class="cert-issuer-badge"><img src="images/icons/Rotary.png" alt="Rotary International"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Rotary Peace Fellowship</div>
+          <div class="cert-issuer-name">Rotary International · ID: 49883026421757734416</div>
+          <div class="cert-date">Sep 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQG2VXOE8-jlHg/profile-treasury-document-cover-images_1920/B56ZlBdwziJ8BM-/0/1757739947175?e=1777183200&v=beta&t=B-K3cEWjKFg53FKSKBSYgLDr5_zjJuE7JK-MdjUXhKw" target="_blank" class="cert-card fade-up d1">
+        <div class="cert-issuer-badge"><img src="images/icons/Rotary.png" alt="Rotary International"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Grant Management</div>
+          <div class="cert-issuer-name">Rotary International · ID: 236883026421757737093</div>
+          <div class="cert-date">Sep 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQH75E7NKfTXyA/profile-treasury-document-images_1920/B56ZfvPVTHGUA0-/1/1752065466018?e=1777507200&v=beta&t=7e8xClNGa9KZbczZcAkpgFg103QkdJrgCV5V85sKWIs" target="_blank" class="cert-card fade-up d2">
+        <div class="cert-issuer-badge"><img src="images/icons/UNITAR.png" alt="UNITAR"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Weapons & Ammunition Management</div>
+          <div class="cert-issuer-name">UNITAR</div>
+          <div class="cert-date">Jul 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQFVxMQ-BVfMhQ/profile-treasury-document-images_1920/B56Zf8vCuPG0As-/1/1752291884056?e=1777507200&v=beta&t=FXasSdupFiOAC_jSw38-TmrkYqFYfGv5HB_abyimN2E" target="_blank" class="cert-card fade-up d3">
+        <div class="cert-issuer-badge"><img src="images/icons/UNCC.png" alt="UN CC:Learn"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Gender Equality & Human Rights</div>
+          <div class="cert-issuer-name">UN CC:Learn</div>
+          <div class="cert-date">Jun 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQHwI_iQkTGO2w/profile-treasury-document-cover-images_800/B56ZhMVlUnH0A8-/0/1753627384482?e=1777183200&v=beta&t=ZQ1AUpoILo-e4vRPlK5qrpntU-UMWXhLOmcQp01c0Q0" target="_blank" class="cert-card fade-up">
+        <div class="cert-issuer-badge"><img src="images/icons/Stanford.png" alt="Stanford"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Health Across the Gender Spectrum</div>
+          <div class="cert-issuer-name">Stanford Univ. School of Medicine · ID: 48979</div>
+          <div class="cert-date">Jul 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQHzMxgSpweraA/profile-treasury-document-images_1920/B56ZlBlCdaJoAs-/1/1757741854136?e=1777507200&v=beta&t=GEJVdyk6Rx91-pdSbxuIUwB9FPpw2MbGTShcQxqjG0g" target="_blank" class="cert-card fade-up d1">
+        <div class="cert-issuer-badge"><img src="images/icons/UTMDAndersonCancerCenter.png" alt="UT MD Anderson"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Prostate Cancer Survivorship</div>
+          <div class="cert-issuer-name">UT MD Anderson Cancer Center · ID: 723608</div>
+          <div class="cert-date">Sep 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQGHJGnoU-eGDA/profile-treasury-document-cover-images_1280/B56ZmqLAsPIsAw-/0/1759496638498?e=1777183200&v=beta&t=w5tVolC3IhcCbJeXtnQYMTgR7LbHi9HGkr-r-k1dTCM" target="_blank" class="cert-card fade-up d2">
+        <div class="cert-issuer-badge"><img src="images/icons/Brown-University.jpg" alt="Brown University"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Buprenorphine for Opioid Use Disorder</div>
+          <div class="cert-issuer-name">Brown University</div>
+          <div class="cert-date">Oct 2025</div>
+        </div>
+      </a>
+
+      <a href="https://media.licdn.com/dms/image/v2/D562DAQEp6yMy1ZrjBQ/profile-treasury-document-cover-images_800/B56ZlBdPCyI4A8-/0/1757739808675?e=1777183200&v=beta&t=TbZt3jIK663RW62pRuRvr1uWj_mFxD1_LUEGy1uvHeE" target="_blank" class="cert-card fade-up d3">
+        <div class="cert-issuer-badge"><img src="images/icons/NACE.jpeg" alt="NACE"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Managing the Stimulant Crisis</div>
+          <div class="cert-issuer-name">NACE · ID: ded0cfd7</div>
+          <div class="cert-date">Sep 2025</div>
+        </div>
+      </a>
+
+      <a href="https://www.educba.com/certificate/?c=OHNTW31WC" target="_blank" class="cert-card fade-up">
+        <div class="cert-issuer-badge"><img src="images/icons/EDUCBA.jpeg" alt="EDUCBA"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">Website Building (HTML5, CSS3, JS, Bootstrap)</div>
+          <div class="cert-issuer-name">EDUCBA · ID: OHNTW31WC</div>
+          <div class="cert-date">Feb 2021</div>
+        </div>
+      </a>
+
+      <a href="https://www.eduonix.com/certificate/c6010cb40a" target="_blank" class="cert-card fade-up d1">
+        <div class="cert-issuer-badge"><img src="images/icons/Eduonix.png" alt="Eduonix"></div loading="lazy">
+        <div class="cert-body">
+          <div class="cert-name">JavaScript & jQuery From Scratch</div>
+          <div class="cert-issuer-name">Eduonix · ID: c6010cb40a</div>
+          <div class="cert-date">Aug 2021</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     JOURNEY / IMAGES SECTION
+═══════════════════════════════════════════════ -->
+<section id="journey" class="section">
+  <div class="container">
+    <span class="section-label fade-up">Journey</span>
+    <h2 class="section-title fade-up d1">A Life In Motion</h2>
+    <div class="section-rule fade-up d2"></div>
+    <p class="journey-intro fade-up d2">
+      From Chitwan's creative scene to Geneva's diplomatic halls, from a bedroom studio to peer-reviewed journals —
+       journey shaped by curiosity, service, and the relentless pursuit of meaningful work.
+    </p>
+
+   
+    <!-- Timeline milestones -->
+    <div class="journey-milestones">
+      <div class="milestone fade-up">
+        <div class="milestone-year">2018</div>
+        <div class="milestone-event">Started music production & creative journey</div>
+      </div>
+      <div class="milestone fade-up d1">
+        <div class="milestone-year">2020</div>
+        <div class="milestone-event">Founded imdipul Records · Joined Interact</div>
+      </div>
+      <div class="milestone fade-up d2">
+        <div class="milestone-year">2021</div>
+        <div class="milestone-event">IMDb listed · Global distribution launched</div>
+      </div>
+      <div class="milestone fade-up d3">
+        <div class="milestone-year">2022</div>
+        <div class="milestone-event">Web development career begins · Freelance production</div>
+      </div>
+      <div class="milestone fade-up">
+        <div class="milestone-year">2023</div>
+        <div class="milestone-event">IT Officer Zone II · Valmiki MUN Delegate</div>
+      </div>
+      <div class="milestone fade-up d1">
+        <div class="milestone-year">2024</div>
+        <div class="milestone-event">Editor-in-Chief · Presidential Award · IMO Pre-TST</div>
+      </div>
+      <div class="milestone fade-up d2">
+        <div class="milestone-year">2025</div>
+        <div class="milestone-event">LRPT published · IEEE/ASME · 15+ Certifications</div>
+      </div>
+      <div class="milestone fade-up d3">
+        <div class="milestone-year">2026</div>
+        <div class="milestone-event">ASME ES2026 · GPIC Rome · EYS Geneva · BSc ongoing</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     CONTACT
+═══════════════════════════════════════════════ -->
+<section id="contact" class="section section-alt">
+  <div class="container">
+    <span class="section-label fade-up">Contact</span>
+    <h2 class="section-title fade-up d1">Let's Connect</h2>
+    <div class="section-rule fade-up d2"></div>
+
+    <div class="contact-layout">
+      <div class="fade-up">
+        <h3 class="contact-heading">Open to research collaborations, creative projects & speaking opportunities.</h3>
+        <p class="contact-sub">
+          Whether you're a researcher, journalist, organizer, or curious mind — I'd love to hear from you.
+          Reach out for collaborations on energy systems research, creative technology, or civic leadership.
+        </p>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon-wrap"><img src="images/icons/mail.png" alt="Email"></div loading="lazy">
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-val"><a href="mailto:dipul@computer.org">dipul@computer.org</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-wrap"><img src="images/icons/phone.png" alt="Phone"></div loading="lazy">
+            <div>
+              <div class="contact-label">Phone / WhatsApp</div>
+              <div class="contact-val"><a href="tel:+9779769387781">+977 9769387781</a></div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-wrap"><img src="images/icons/location.png" alt="Location"></div loading="lazy">
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-val"> Bagmati Province, Nepal</div>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon-wrap"><img src="images/icons/website.png" alt="Website"></div loading="lazy">
+            <div>
+              <div class="contact-label">Website</div>
+              <div class="contact-val"><a href="https://dipulpoudel.com.np" target="_blank">dipulpoudel.com.np</a></div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+
+      <div class="contact-card fade-up d1">
+        <div class="contact-card-head">
+          <div class="contact-card-title">Quick Links</div>
+          <div class="contact-card-sub">Reach me across platforms directly</div>
+        </div>
+        <div class="contact-card-body">
+          <a href="mailto:dipulpoudel123@gmail.com" class="contact-card-item">
+            <span class="cci-icon"></span>
+            <div><div class="cci-label">Primary Email</div><div class="cci-val">dipulpoudel123@gmail.com</div></div>
+          </a>
+          <a href="https://www.linkedin.com/in/imdipul" target="_blank" class="contact-card-item">
+            <span class="cci-icon"></span>
+            <div><div class="cci-label">LinkedIn</div><div class="cci-val">linkedin.com/in/imdipul</div></div>
+          </a>
+          <a href="https://orcid.org/0009-0003-8154-2150" target="_blank" class="contact-card-item">
+            <span class="cci-icon"></span>
+            <div><div class="cci-label">ORCID iD</div><div class="cci-val">0009-0003-8154-2150</div></div>
+          </a>
+          <a href="https://scholar.google.com/citations?user=auPA_qAAAAAJ&hl=en" target="_blank" class="contact-card-item">
+            <span class="cci-icon"></span>
+            <div><div class="cci-label">Google Scholar</div><div class="cci-val">View Research Profile</div></div>
+          </a>
+          <a href="https://www.youtube.com/channel/UCeTHmmIqevsUFS8iUmcqXBA" target="_blank" class="contact-card-item">
+            <span class="cci-icon"></span>
+            <div><div class="cci-label">Portfolio</div><div class="cci-val">Youtube</div></div>
+          </a>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-brand-name">Dipul Poudel</div>
+      <div class="footer-brand-sub">
+        Dipul Poudel , professionally known as imdipul, is a Nepali independent researcher, creative technologist. He is best known for authoring Dipul's Loss-Reclamation Priority Theory (LRPT), published in the International Journal of Engineering Development and Research (IJEDR, Volume 14, Issue 1, January 2026) and indexed on engrXiv (DOI: 10.31224/6283), OSF, and SSRN. The paper was accepted for oral presentation at the ASME Energy Sustainability Conference 2026 and the Global Physics Innovation Conference, Rome. Poudel is a member of IEEE (No. 102054571) and the American Society of Mechanical Engineers, and also Rotaract. He founded imdipul Records in 2020, an independent creative-technology label distributed globally across major streaming platforms. He is currently enrolled in BSc (Hons) Computer Systems Engineering at the University of Sunderland.
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">ACADEMIC & RESEARCH PROFILES</div>
+      <div class="footer-links">
+        <a href="https://scholar.google.com/citations?user=auPA_qAAAAAJ&hl=en" target="_blank" class="footer-link">Google Scholar</a>
+         <a href="https://orcid.org/0009-0003-8154-2150" target="_blank" class="footer-link">ORCID Profile</a>
+        <a href="https://www.researchgate.net/profile/Dipul-Poudel" target="_blank" class="footer-link">ResearchGate</a>
+        <a href="https://sciprofiles.com/profile/dipulpoudel" target="_blank" class="footer-link">SciProfiles</a>
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6078708" target="_blank" class="footer-link">SSRN</a>
+        <a href="https://www.scribd.com/document/981498264/Dipul-s-Loss-Reclamation-Priority-Theory-LRPT" target="_blank" class="footer-link">Scribd</a>
+        <a href="https://independent.academia.edu/DipulPoudel" target="_blank" class="footer-link">Academia</a>
+        <a href="https://sciety.org/articles/activity/10.31224/6283" target="_blank" class="footer-link">Sciety</a>
+        <a href="https://zenodo.org/search?q=metadata.creators.person_or_org.name%3A%22POUDEL%2C%20DIPUL%22&l=list&p=1&s=10&sort=bestmatch" target="_blank" class="footer-link">Zenodo</a>
+        <a href="https://engrxiv.org/preprint/view/6283" target="_blank" class="footer-link">EngrXiv</a>
+        <a href="https://10.17605/OSF.IO/A2YE7" target="_blank" class="footer-link">OSF</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Connect</div>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/imdipul" target="_blank" class="footer-link">LinkedIn</a>
+        <a href="https://x.com/imdipul" target="_blank" class="footer-link">X / Twitter</a>
+        <a href="https://www.instagram.com/imdipul" target="_blank" class="footer-link">Instagram</a>
+        <a href="https://www.facebook.com/imdipul" target="_blank" class="footer-link">Facebook</a>
+        <a href="https://www.youtube.com/imdipul" target="_blank" class="footer-link">Youtube</a>
+        <a href="https://github.com/imdipul" target="_blank" class="footer-link">Github</a>
+        <a href="https://www.instagram.com/imdipul" target="_blank" class="footer-link">WhatsApp</a>
+        <a href="https://www.reddit.com/user/dipul10/" target="_blank" class="footer-link">Reddit</a>
+        <a href="https://www.instagram.com/imdipul" target="_blank" class="footer-link">Discord</a>
+        <a href="https://www.paypal.com/imdipul" target="_blank" class="footer-link">Paypal</a>
+        <a href="dipulpoudel" target="_blank" class="footer-link">WeChat</a>
+
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Dipul Poudel (imdipul). All rights reserved.</div>
+    <div class="footer-orcid">ORCID: <a href="https://orcid.org/0009-0003-8154-2150" target="_blank">0009-0003-8154-2150</a></div>
+  </div>
+</footer>
+
+<script>
+// Navbar scroll effect
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// Intersection Observer for fade-up animations
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+const expNavItems = document.querySelectorAll('.exp-nav-item');
+
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(a => {
+    a.classList.remove('active');
+    if (a.getAttribute('href') === '#' + current) a.classList.add('active');
+  });
+});
+
+// Experience nav — highlight on click
+expNavItems.forEach(item => {
+  item.addEventListener('click', () => {
+    expNavItems.forEach(i => i.classList.remove('active'));
+    item.classList.add('active');
+  });
+});
+
+// Smooth scroll offset for fixed nav
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      window.scrollTo({ top: target.offsetTop - 72, behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
